@@ -15,6 +15,13 @@ export const selectedAccessControlLevel = ref(null);
 
 const makeRequest = async (options) => {
   try {
+    if (options.accessToken) {
+      options.config.headers = {
+        ...options.config.headers,
+        Authorization: `Bearer ${options.accessToken}`,
+      };
+    }
+
     const response = await axios(options.config);
     const { data } = response;
 
@@ -46,7 +53,7 @@ export const getPublicResource = async () => {
   apiResponse.value = JSON.stringify(data, null, 2);
 };
 
-export const getProtectedResource = async () => {
+export const getProtectedResource = async (accessToken) => {
   selectedAccessControlLevel.value = AccessControlLevel.PROTECTED;
 
   apiEndpoint.value = "GET /api/messages/protected";
@@ -59,12 +66,12 @@ export const getProtectedResource = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const data = await makeRequest({ config, accessToken });
 
   apiResponse.value = JSON.stringify(data, null, 2);
 };
 
-export const getRbacResource = async () => {
+export const getRbacResource = async (accessToken) => {
   selectedAccessControlLevel.value = AccessControlLevel.RBAC;
 
   apiEndpoint.value = "GET /api/messages/admin";
@@ -77,12 +84,12 @@ export const getRbacResource = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const data = await makeRequest({ config, accessToken });
 
   apiResponse.value = JSON.stringify(data, null, 2);
 };
 
-export const checkCorsAllowedMethod = async () => {
+export const checkCorsAllowedMethod = async (accessToken) => {
   selectedAccessControlLevel.value = AccessControlLevel.CORS;
 
   apiEndpoint.value = "DELETE /api/messages/public";
@@ -95,7 +102,7 @@ export const checkCorsAllowedMethod = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const data = await makeRequest({ config, accessToken });
 
   apiResponse.value = JSON.stringify(data, null, 2);
 };

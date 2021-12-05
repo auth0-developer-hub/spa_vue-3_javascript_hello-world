@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
 import Auth0Feature from "@/components/auth0-feature.vue";
 
 export default {
