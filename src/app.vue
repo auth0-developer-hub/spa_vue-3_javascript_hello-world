@@ -1,6 +1,7 @@
 <template>
   <div class="page-layout">
     <NavBar />
+    <MobileNavBar />
     <div class="page-layout__content">
       <router-view />
     </div>
@@ -8,12 +9,8 @@
   </div>
 </template>
 
-<script>
-import Footer from "@/components/footer.vue";
-import NavBar from "@/components/nav-bar.vue";
-
-export default {
-  name: "App",
-  components: { Footer, NavBar },
-};
+<script setup>
+import Footer from "./components/footer.vue";
+import NavBar from "./components/navigation/desktop/nav-bar.vue";
+import MobileNavBar from "./components/navigation/mobile/mobile-nav-bar.vue";
 </script>

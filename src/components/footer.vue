@@ -11,7 +11,7 @@
             <FooterHyperlink path="https://auth0.com/docs/quickstarts/">
               <span>
                 Securely implement authentication using Auth0 on any stack and
-                any device&nbsp;
+                any device
               </span>
               <u>in less than 10 minutes</u>
             </FooterHyperlink>
@@ -52,40 +52,29 @@
   </footer>
 </template>
 
-<script>
-import FooterHyperlink from "@/components/footer-hyperlink.vue";
+<script setup>
+import FooterHyperlink from "./footer-hyperlink.vue";
 
-export default {
-  name: "Footer",
-  components: { FooterHyperlink },
-  setup() {
-    const resourceList = [
-      {
-        path: "https://auth0.com/why-auth0/",
-        label: "Why Auth0",
-      },
-      {
-        path: "https://auth0.com/docs/get-started",
-        label: "How It Works",
-      },
-      {
-        path: "https://auth0.com/blog/developers/",
-        label: "Developer Blog",
-      },
-      {
-        path: "https://auth0.com/contact-us",
-        label: "Contact an Expert",
-      },
-    ];
-
-    const signUp = () => {
-      window.open("https://auth0.com/signup", "_blank", "noopener noreferrer");
-    };
-
-    return {
-      resourceList,
-      signUp,
-    };
+const resourceList = [
+  {
+    path: "https://auth0.com/why-auth0/",
+    label: "Why Auth0",
   },
+  {
+    path: "https://auth0.com/docs/get-started",
+    label: "How It Works",
+  },
+  {
+    path: "https://auth0.com/blog/developers/",
+    label: "Developer Blog",
+  },
+  {
+    path: "https://auth0.com/contact-us",
+    label: "Contact an Expert",
+  },
+];
+
+const signUp = () => {
+  window.open("https://auth0.com/signup", "_blank", "noopener noreferrer");
 };
 </script>

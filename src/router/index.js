@@ -15,12 +15,19 @@ const routes = [
       import(/* webpackChunkName: "profile" */ "../pages/profile.vue"),
   },
   {
-    path: "/external-api",
-    name: "external-api",
-    component: () =>
-      import(
-        /* webpackChunkName: "external-api" */ "../pages/external-api.vue"
-      ),
+    path: "/public",
+    name: "public",
+    component: () => import("../pages/public.vue"),
+  },
+  {
+    path: "/protected",
+    name: "protected",
+    component: () => import("../pages/protected.vue"),
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: () => import("../pages/admin.vue"),
   },
   {
     path: "/:catchAll(.*)",
@@ -30,7 +37,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 

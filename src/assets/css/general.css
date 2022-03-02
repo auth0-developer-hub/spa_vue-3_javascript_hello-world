@@ -138,7 +138,11 @@ pre {
   width: 100%;
 }
 
-#app {
+code {
+  color: var(--emerald);
+}
+
+#root {
   height: 100%;
   width: 100%;
 }

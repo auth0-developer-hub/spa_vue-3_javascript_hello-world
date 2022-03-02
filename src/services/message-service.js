@@ -1,38 +1,8 @@
-import axios from "axios";
-import { ref } from "vue";
+import { callExternalApi } from "./external-api-service";
 
-export const AccessControlLevel = {
-  PUBLIC: "public",
-  PROTECTED: "requires-authentication",
-  RBAC: "requires-role-permission",
-  CORS: "requires-cors-allowed-method",
-};
-
-const apiServerUrl = process.env.VUE_APP_API_SERVER_URL;
-export const apiEndpoint = ref("");
-export const apiResponse = ref("Click a button to make an API request...");
-export const selectedAccessControlLevel = ref(null);
-
-const makeRequest = async (options) => {
-  try {
-    const response = await axios(options.config);
-    const { data } = response;
-
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response) {
-      return error.response.data;
-    }
-
-    return error.message;
-  }
-};
+const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
 
 export const getPublicResource = async () => {
-  selectedAccessControlLevel.value = AccessControlLevel.PUBLIC;
-
-  apiEndpoint.value = "GET /api/messages/public";
-
   const config = {
     url: `${apiServerUrl}/api/messages/public`,
     method: "GET",
@@ -41,16 +11,15 @@ export const getPublicResource = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const { data, error } = await callExternalApi({ config });
 
-  apiResponse.value = JSON.stringify(data, null, 2);
+  return {
+    data: data || null,
+    error,
+  };
 };
 
 export const getProtectedResource = async () => {
-  selectedAccessControlLevel.value = AccessControlLevel.PROTECTED;
-
-  apiEndpoint.value = "GET /api/messages/protected";
-
   const config = {
     url: `${apiServerUrl}/api/messages/protected`,
     method: "GET",
@@ -59,16 +28,15 @@ export const getProtectedResource = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const { data, error } = await callExternalApi({ config });
 
-  apiResponse.value = JSON.stringify(data, null, 2);
+  return {
+    data: data || null,
+    error,
+  };
 };
 
-export const getRbacResource = async () => {
-  selectedAccessControlLevel.value = AccessControlLevel.RBAC;
-
-  apiEndpoint.value = "GET /api/messages/admin";
-
+export const getAdminResource = async () => {
   const config = {
     url: `${apiServerUrl}/api/messages/admin`,
     method: "GET",
@@ -77,25 +45,10 @@ export const getRbacResource = async () => {
     },
   };
 
-  const data = await makeRequest({ config });
+  const { data, error } = await callExternalApi({ config });
 
-  apiResponse.value = JSON.stringify(data, null, 2);
-};
-
-export const checkCorsAllowedMethod = async () => {
-  selectedAccessControlLevel.value = AccessControlLevel.CORS;
-
-  apiEndpoint.value = "DELETE /api/messages/public";
-
-  const config = {
-    url: `${apiServerUrl}/api/messages/public`,
-    method: "DELETE",
-    headers: {
-      "content-type": "application/json",
-    },
+  return {
+    data: data || null,
+    error,
   };
-
-  const data = await makeRequest({ config });
-
-  apiResponse.value = JSON.stringify(data, null, 2);
 };
