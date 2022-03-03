@@ -22,17 +22,10 @@
 </template>
 
 <script setup>
-import CodeSnippet from "../components/code-snippet.vue";
+import CodeSnippet from "@/components/code-snippet.vue";
+import { useAuth0 } from "@auth0/auth0-vue";
 
-const user = {
-  nickname: "Alex",
-  name: "Alex Cero",
-  picture: "https://cdn.auth0.com/blog/hello-auth0/auth0-user.png",
-  updated_at: "2021-05-04T21:33:09.415Z",
-  email: "alex@example.com",
-  email_verified: false,
-  sub: "auth0|12345678901234567890",
-};
+const { user } = useAuth0();
 
-const code = JSON.stringify(user, null, 2);
+const code = user ? JSON.stringify(user.value, null, 2) : "";
 </script>

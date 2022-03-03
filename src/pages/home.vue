@@ -4,6 +4,6 @@
 </template>
 
 <script setup>
-import HeroBanner from "../components/hero-banner.vue";
-import Auth0Features from "../components/auth0-features.vue";
+import Auth0Features from "@/components/auth0-features.vue";
+import HeroBanner from "@/components/hero-banner.vue";
 </script>

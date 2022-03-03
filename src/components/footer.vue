@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import FooterHyperlink from "./footer-hyperlink.vue";
+import FooterHyperlink from "@/components/footer-hyperlink.vue";
 
 const resourceList = [
   {

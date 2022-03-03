@@ -19,12 +19,12 @@
 </template>
 
 <script setup>
+import CloseButton from "@/components/navigation/mobile/close-button.vue";
+import MenuButton from "@/components/navigation/mobile/menu-button.vue";
+import MobileNavBarBrand from "@/components/navigation/mobile/mobile-nav-bar-brand.vue";
+import MobileNavBarButtons from "@/components/navigation/mobile/mobile-nav-bar-buttons.vue";
+import MobileNavBarTabs from "@/components/navigation/mobile/mobile-nav-bar-tabs.vue";
 import { ref } from "vue";
-import CloseButton from "./close-button.vue";
-import MenuButton from "./menu-button.vue";
-import MobileNavBarBrand from "./mobile-nav-bar-brand.vue";
-import MobileNavBarButtons from "./mobile-nav-bar-buttons.vue";
-import MobileNavBarTabs from "./mobile-nav-bar-tabs.vue";
 
 const MenuStates = {
   OPEN: "open",

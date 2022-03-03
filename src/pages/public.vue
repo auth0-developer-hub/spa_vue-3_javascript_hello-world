@@ -15,9 +15,9 @@
 </template>
 
 <script setup>
+import CodeSnippet from "@/components/code-snippet.vue";
+import { getPublicResource } from "@/services/message-service";
 import { ref } from "vue";
-import CodeSnippet from "../components/code-snippet.vue";
-import { getPublicResource } from "../services/message-service";
 
 const message = ref("");
 

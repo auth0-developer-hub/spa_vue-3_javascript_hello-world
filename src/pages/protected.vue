@@ -15,14 +15,17 @@
 </template>
 
 <script setup>
+import CodeSnippet from "@/components/code-snippet.vue";
+import { getProtectedResource } from "@/services/message-service";
+import { useAuth0 } from "@auth0/auth0-vue";
 import { ref } from "vue";
-import CodeSnippet from "../components/code-snippet.vue";
-import { getProtectedResource } from "../services/message-service";
 
 const message = ref("");
 
 const getMessage = async () => {
-  const { data, error } = await getProtectedResource();
+  const { getAccessTokenSilently } = useAuth0();
+  const accessToken = await getAccessTokenSilently();
+  const { data, error } = await getProtectedResource(accessToken);
 
   if (data) {
     message.value = JSON.stringify(data, null, 2);
