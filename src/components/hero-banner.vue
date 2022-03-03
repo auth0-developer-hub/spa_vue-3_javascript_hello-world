@@ -13,14 +13,24 @@
   </div>
 </template>
 
-<script setup>
-const logo = "https://cdn.auth0.com/blog/hello-auth0/vue-logo.svg";
+<script>
+export default {
+  name: "HeroBanner",
+  setup() {
+    const logo = "https://cdn.auth0.com/blog/hello-auth0/vue-logo.svg";
 
-const openCodeSample = () => {
-  window.open(
-    "https://auth0.com/developers/hub/code-samples/spa/vue-3-javascript/basic-authentication",
-    "_blank",
-    "noopener noreferrer"
-  );
+    const openQuickStart = () => {
+      window.open(
+        "https://auth0.com/developers/hub/code-samples/spa/vue-3-javascript/basic-authentication",
+        "_blank",
+        "noopener noreferrer"
+      );
+    };
+
+    return {
+      logo,
+      openCodeSample: openQuickStart,
+    };
+  },
 };
 </script>

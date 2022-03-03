@@ -1,27 +1,26 @@
 <template>
   <a
-    :href="props.resourceUrl"
+    :href="resourceUrl"
     class="auth0-feature"
     target="_blank"
     rel="noopener noreferrer"
   >
     <h3 class="auth0-feature__headline">
-      <img
-        class="auth0-feature__icon"
-        :src="props.icon"
-        alt="external link icon"
-      />
-      {{ props.title }}
+      <img class="auth0-feature__icon" :src="icon" alt="external link icon" />
+      {{ title }}
     </h3>
-    <p class="auth0-feature__description">{{ props.description }}</p>
+    <p class="auth0-feature__description">{{ description }}</p>
   </a>
 </template>
 
-<script setup>
-const props = defineProps({
-  title: String,
-  description: String,
-  resourceUrl: String,
-  icon: String,
-});
+<script>
+export default {
+  name: "Auth0Feature",
+  props: {
+    title: String,
+    description: String,
+    resourceUrl: String,
+    icon: String,
+  },
+};
 </script>

@@ -4,6 +4,14 @@
   </div>
 </template>
 
-<script setup>
-const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
+<script>
+export default {
+  name: "Loader",
+  setup() {
+    const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
+    return {
+      loadingImg,
+    };
+  },
+};
 </script>

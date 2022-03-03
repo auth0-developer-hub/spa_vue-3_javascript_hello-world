@@ -721,9 +721,3 @@ MigrationBackup/
 
 build/
 
-dist
-dist-ssr
-*.local
-
-/cypress/videos/
-/cypress/screenshots/

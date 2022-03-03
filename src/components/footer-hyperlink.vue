@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="props.path"
+    :href="path"
     class="footer__hyperlink"
     target="_blank"
     rel="noopener noreferrer"
@@ -9,8 +9,11 @@
   </a>
 </template>
 
-<script setup>
-const props = defineProps({
-  path: String,
-});
+<script>
+export default {
+  name: "FooterHyperlink",
+  props: {
+    path: String,
+  },
+};
 </script>

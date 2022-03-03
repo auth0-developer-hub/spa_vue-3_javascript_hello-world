@@ -30,6 +30,11 @@
   </div>
 </template>
 
-<script setup>
+<script lang="js">
 import Auth0Feature from "@/components/auth0-feature.vue";
+
+export default {
+  name: "Auth0Features",
+  components: { Auth0Feature },
+};
 </script>
